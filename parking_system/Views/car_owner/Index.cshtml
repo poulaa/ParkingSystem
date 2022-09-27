@@ -1,0 +1,49 @@
+﻿@model IEnumerable<parking_system.Models.car_owner>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Car Owner</a>
+</p>
+<h4>Please Memorize Car Owner Id Inorder To Make A Reservation</h4>
+<br/>
+<table  >
+    <thead>
+        <tr>
+            <th>
+               Car Owner Id
+            </th>
+            <th>
+              Name  
+            </th>
+            <th>
+               License 
+            </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.car_owner_id)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.licen_number)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.car_owner_id">Edit</a> |
+                
+                <a asp-action="Delete" asp-route-id="@item.car_owner_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

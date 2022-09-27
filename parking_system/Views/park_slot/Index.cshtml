@@ -1,0 +1,63 @@
+﻿@model IEnumerable<parking_system.Models.park_slot>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Make A New Reservation</a>
+    <br/>
+</p>
+<table>
+    <thead>
+        <tr>
+        
+            <th>
+              Day
+            </th>
+            <th>
+               Spot
+            </th>
+            <th>
+               Car Owner Id
+            </th>
+            <th>
+             Name
+            </th>
+            <th>
+               License
+            </th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.day)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.spot)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.car_owner.car_owner_id)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(modelItem => item.car_owner.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.car_owner.licen_number)
+                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+           
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
